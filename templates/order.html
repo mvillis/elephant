@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Form</title>
+</head>
+<body>
+<h2>My Order</h2>
+<div id="right">
+    <div style="text-align: left; width: 350px; margin-left:20px;">
+        <form  action="" method="POST" enctype="multipart/form-data">
+            Quantity: <input type="number" name="qty" value="submit"/><br /><br />
+            Price:<input name="price" type="number" value="" size="30"/> <br /><br />
+            State:<input name="state" type="text" value="" size="30"/> <br /> <br />
+            <input type="submit" value="Calculate Total"/>
+        </form>
+        {% if order['final_price'] %}
+            <ul>
+            <li>Discount Rate: {{ order['discount_rate'] }}</li>
+            <li>{{ "Discounted Price: $%.2f" % order['discount_price'] }}</li>
+            <li>Tax Rate: {{ order['tax_rate'] }}%</li>
+            <li>Tax Amount: {{ order['tax_amount'] }}</li>
+            </ul>
+            <p>{{ "Total: $%.2f" % order['final_price'] }}</p>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>
